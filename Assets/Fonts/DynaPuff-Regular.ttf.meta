@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 14d3780bacc96294dbc2419a241ea70f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - DynaPuff
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1285f4379abb4f74e84b7df4211eab79, type: 3}
+  - {fileID: 12800000, guid: 415f95a07435a964fb566d4abce2dac8, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
