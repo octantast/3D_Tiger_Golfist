@@ -70,6 +70,12 @@ public class UI : MonoBehaviour
     public GameObject tutorialText2;
     public Animator tutorialanimated;
 
+    // circles
+    public int howmanycircles;
+
+    public GameObject light;
+    private bool lighton;
+
     void Start()
     {
         Time.timeScale = 1;
@@ -145,6 +151,19 @@ public class UI : MonoBehaviour
                 relief.SetActive(false);
             }
             reliefs[(int)mode - 1].SetActive(true);
+
+            if (mode == 1 || mode == 2 || mode == 4 || mode == 6 || mode == 10)
+            {
+                howmanycircles = 1;
+            }
+            else if(mode == 3 || mode == 7 || mode == 8)
+            {
+                howmanycircles = 2;
+            }
+            else if(mode == 5 || mode == 9)
+            {
+                howmanycircles = 3;
+            }
         }
 
         timerCurrent = timerMax;
@@ -153,6 +172,12 @@ public class UI : MonoBehaviour
 
     public void Update()
     {
+        if (!lighton)
+        {
+            lighton = true;
+               GameObject lightning = Instantiate(light, transform.position, Quaternion.Euler(50, -30, 0));
+        }
+
         if (timerCurrent > 0)
         {
             timerCurrent -= Time.deltaTime;

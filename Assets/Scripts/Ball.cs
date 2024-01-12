@@ -33,6 +33,7 @@ public class Ball : MonoBehaviour
                 timer = 0.5f;
                 Debug.Log("stopped");
                 ui.player.privatespecialpunch = false;
+                ui.player.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 5);
                 ui.player.ballflying = false;
                 ui.player.ui.unactiveShot();
                 ui.player.swipesBlocked = false;
@@ -50,7 +51,12 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Hole")
+        if (other.gameObject.tag == "Circle")
+        {
+            ui.howmanycircles -= 1;
+            other.gameObject.GetComponent<CircleController>().enabled = true;
+        }
+        if (other.gameObject.tag == "Hole" && ui.howmanycircles == 0)
         {
             rb.velocity = Vector3.zero;
             collide.isTrigger = true;

@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviour
     public bool ballflying;
     public Transform targetdot;
     private Vector3 targetposition;
+    public Rigidbody rbball;
+    public float punchPower;
+    public float punchPower2;
+
 
     // effects
     public ParticleSystem punchEffect;
@@ -160,16 +164,25 @@ public class PlayerController : MonoBehaviour
             // ìÿ÷
             if (ballactivated && !ballflying)
             {
-                Vector3 direction = ball.position - transform.position;
-                direction.Normalize();
-                targetposition = ball.position + direction * 5f;
-                targetposition.y = 1;
+                if (!ui.arrowmoving.activeSelf)
+                {
+                    //Vector3 direction = ball.position - transform.position;
+                    //direction.Normalize();
+                    //targetposition = ball.position + direction * 5f;
+                    //targetposition.y = 1;
+                    //lineRenderer.SetPosition(0, ball.position);
+                    // lineRenderer.SetPosition(1, targetposition);
+                    //lineRenderer.positionCount = 2;
 
-                lineRenderer.SetPosition(0, ball.position);
-                lineRenderer.SetPosition(1, targetposition);
+                    targetposition = ball.position - transform.position;
+                    targetposition.Normalize();
+                    targetposition.y = 1;
+                    DisplayTrajectory(7, ball);
 
 
-                lineRenderer.enabled = true;
+
+                   // lineRenderer.enabled = true;
+                }
             }
 
         }
@@ -182,11 +195,17 @@ public class PlayerController : MonoBehaviour
             ballrb.AddForce(lateralForceVector, ForceMode.Acceleration);
 
 
-            lineRenderer.SetPosition(0, transform.position);
-            lineRenderer.SetPosition(1, ball.position);
+            targetposition = ball.position - transform.position;
+            targetposition.Normalize();
+            targetposition.y = 1;
+            DisplayTrajectory(power, transform);
+
+            //lineRenderer.SetPosition(0, transform.position);
+            //lineRenderer.SetPosition(1, ball.position);
+            //lineRenderer.positionCount = 2;
 
 
-            lineRenderer.enabled = true;
+            //lineRenderer.enabled = true;
         }
         else
         {
@@ -195,6 +214,53 @@ public class PlayerController : MonoBehaviour
 
         MoveToTarget();
 
+        if(ui.arrowmoving.activeSelf && !ballflying)
+        {
+            float x = ui.arrowmovingchild.transform.localPosition.x;
+            if (x < -205)
+            {
+                power = 10;
+            }
+            else if (x > -205 && x < -150)
+            {
+                power = 9;
+            }
+            else if (x > -150 && x < -95)
+            {
+                power = 8;
+            }
+            else if (x > -95 && x < -50)
+            {
+                power = 7;
+            }
+            else if (x > -50 && x < 15)
+            {
+                power = 6;
+            }
+            else if (x > 15 && x < 70)
+            {
+                power = 5;
+            }
+            else if (x > 70 && x < 130)
+            {
+                power = 4;
+            }
+            else if (x > 130 && x < 180)
+            {
+                power = 3;
+            }
+            else if (x > 180)
+            {
+                power = 2;
+            }
+
+
+            DisplayTrajectory(power, ball);
+
+        }
+
+
+
         // tutorial check
         if ((horizontal != 0 || vertical != 0) && ui.movementTip == 0)
         {
@@ -202,6 +268,37 @@ public class PlayerController : MonoBehaviour
             PlayerPrefs.SetFloat("movementTip", ui.movementTip);
             PlayerPrefs.Save();
         }
+    }
+
+    void DisplayTrajectory(float power, Transform objecttocheck)
+    {
+        lineRenderer.enabled = true;
+
+        float timeStep = 0.05f;
+        float currentTime = 0f;
+
+        float maxDistance = Mathf.Pow(power, 2) * Mathf.Abs(targetposition.y) / (-2f * gravity);
+        int numPoints = Mathf.CeilToInt(maxDistance / 0.1f);
+        lineRenderer.positionCount = numPoints;
+
+        for (int i = 0; i < numPoints; i++)
+        {
+            float displacementX = power * currentTime * targetposition.x;
+            float displacementY = power * currentTime * targetposition.y + 1 * gravity * currentTime * currentTime;
+            float displacementZ = power * currentTime * targetposition.z;
+
+            Vector3 trajectoryPoint = new Vector3(
+                objecttocheck.position.x + displacementX,
+                objecttocheck.position.y + displacementY,
+                objecttocheck.position.z + displacementZ
+            );
+
+            lineRenderer.SetPosition(i, trajectoryPoint);
+
+            currentTime += timeStep;
+        }
+
+
     }
 
     void CheckSwipeInput()
@@ -287,53 +384,27 @@ public class PlayerController : MonoBehaviour
         ui.sounds[3].Play();
         ui.currentshots += 1;
         animator.Play("Punch");
-        float x = ui.arrowmovingchild.transform.localPosition.x;
-        if (x < -205)
-        {
-        power = 10;
-        }
-        else if (x > -205 && x < -150)
-        {
-            power = 9;
-        }
-        else if (x > -150 && x < -95)
-        {
-            power = 8;
-        }
-        else if (x > -95 && x < -50)
-        {
-            power = 7;
-        }
-        else if (x > -50 && x < 15)
-        {
-            power = 6;
-        }
-        else if (x > 15 && x < 70)
-        {
-            power = 5;
-        }
-        else if (x > 70 && x < 130)
-        {
-            power = 4;
-        }
-        else if (x > 130 && x < 180)
-        {
-            power = 3;
-        }
-        else if (x > 180)
-        {
-            power = 2;
-        }
+        
 
         ballrb.velocity = Vector3.zero;
         ballrb.angularVelocity = Vector3.zero;
-        ballrb.AddForce(targetdot.transform.forward * power, ForceMode.Impulse);
+        // ballrb.AddForce(targetdot.transform.forward * power, ForceMode.Impulse);
+
+        Vector3 forwardDirection = targetdot.transform.forward * power/ punchPower;
+        forwardDirection += Vector3.up * power/ punchPower2;
+        // Vector3 totalDirection = forwardDirection + upwardDirection;
+        ballrb.AddForce(forwardDirection, ForceMode.Impulse);
+
+        //Vector3 forceDirection = (trajectoryPoint - ball.position).normalized;
+        //ballrb.AddForce(forceDirection * power, ForceMode.Impulse);
+
 
         ballflying = true;
         swipesBlocked = true;
 
         if (specialPunch)
         {
+            specialPunch = false;
             ui.a1bought = 0;
             ui.a1check();
             PlayerPrefs.SetInt("a1bought", ui.a1bought);
@@ -358,8 +429,9 @@ public class PlayerController : MonoBehaviour
 
             characterController.Move(move);
 
-            Vector3 ballPositionToLook = new Vector3(ball.position.x, ball.position.y + 0.5f, ball.position.z);
+            Vector3 ballPositionToLook = new Vector3(ball.position.x, ball.position.y+0.5f, ball.position.z);
             objectToRotate.transform.LookAt(ballPositionToLook);
+
 
             moveDirection.y += gravity * Time.deltaTime;
             characterController.Move(moveDirection);
@@ -406,22 +478,22 @@ public class PlayerController : MonoBehaviour
 
     public void swiperight()
     {
-        vertical = 0;
+        //vertical = 0;
         horizontal = 1;
     }
     public void swipeleft()
     {
-        vertical = 0;
+        //vertical = 0;
         horizontal = -1;
     }
     public void swipeUp()
     {
-        horizontal = 0;
+        //horizontal = 0;
         vertical = 1;
     }
     public void swipeDown()
     {
-        horizontal = 0;
+        //horizontal = 0;
         vertical = -1;
     }
 }
