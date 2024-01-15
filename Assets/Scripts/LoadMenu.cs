@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -8,23 +7,35 @@ public class LoadMenu : MonoBehaviour
 {
     //private AsyncOperation asyncOperation;
     public Image loading;
+
+    public float fillDuration = 8f;
+
     void Start()
     {
-        //asyncOperation = SceneManager.LoadSceneAsync("MainMenu");
-        //asyncOperation.allowSceneActivation = false;
+        if (loading != null)
+        {
+            StartCoroutine(FillImage());
+        }
     }
 
-    private void Update()
+    IEnumerator FillImage()
     {
+        float timer = 0;
+        while (timer < fillDuration)
+        {
+            loading.fillAmount = timer / fillDuration;
+            timer += Time.deltaTime;
+            yield return null;
+        }
 
-        if (loading.fillAmount < 0.9f)
-        {
-            loading.fillAmount = Mathf.Lerp(loading.fillAmount, 1, Time.deltaTime * 2);
-        }
-        else
-        {
-            // asyncOperation.allowSceneActivation = true;
-            SceneManager.LoadScene("MainMenu");
-        }
+        loading.fillAmount = 1;
+
+        // Function to call after the image is filled
+        PerformFunctionAfterFill();
+    }
+
+    void PerformFunctionAfterFill()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
