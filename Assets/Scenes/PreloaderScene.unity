@@ -205,123 +205,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
         type: 3}
-      propertyPath: _idfaCheck
-      value: 
-      objectReference: {fileID: 1116103912}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
       propertyPath: Veg_idfaCheck
       value: 
       objectReference: {fileID: 1116103912}
     - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
         type: 3}
-      propertyPath: stringConcatenator
-      value: 
-      objectReference: {fileID: 1116103911}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: tokenList.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
       propertyPath: VegstringConcatenator
       value: 
       objectReference: {fileID: 1116103911}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: tokenList.Array.data[0]
-      value: g
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: tokenList.Array.data[1]
-      value: ald
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: tokenList.Array.data[2]
-      value: yc
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: tokenList.Array.data[3]
-      value: el
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: tokenList.Array.data[4]
-      value: g
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: tokenList.Array.data[5]
-      value: al
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: detailsList.Array.data[0]
-      value: htt
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: detailsList.Array.data[1]
-      value: ps://
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: detailsList.Array.data[2]
-      value: and
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: detailsList.Array.data[3]
-      value: yga
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: detailsList.Array.data[4]
-      value: lecy
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: detailsList.Array.data[5]
-      value: gg.ho
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: detailsList.Array.data[6]
-      value: me
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: detailsList.Array.data[7]
-      value: s/yn
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: detailsList.Array.data[8]
-      value: da
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: detailsList.Array.data[9]
-      value: l
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: detailsList.Array.data[10]
-      value: ec
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327453162243367338, guid: 5afbfdee9e5e042dfb9d49601202373e,
-        type: 3}
-      propertyPath: detailsList.Array.data[11]
-      value: ga
-      objectReference: {fileID: 0}
     - target: {fileID: 4327453162243367342, guid: 5afbfdee9e5e042dfb9d49601202373e,
         type: 3}
-      propertyPath: m_SortingOrder
-      value: 9999
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 205509147}
+    - target: {fileID: 4327453162243367342, guid: 5afbfdee9e5e042dfb9d49601202373e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4327453162243367343, guid: 5afbfdee9e5e042dfb9d49601202373e,
         type: 3}
@@ -958,6 +858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loading: {fileID: 419446813}
+  fillDuration: 8
 --- !u!114 &1038594703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1104,21 +1005,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4405976200006927252, guid: 0bfe3b149145747cc92dc53bb4df4e9b,
-        type: 3}
-      propertyPath: appID
-      value: 6476062360
-      objectReference: {fileID: 0}
-    - target: {fileID: 4405976200006927252, guid: 0bfe3b149145747cc92dc53bb4df4e9b,
-        type: 3}
-      propertyPath: devKey
-      value: JBuXG3tD3HwGNdSbZVLZyg
-      objectReference: {fileID: 0}
-    - target: {fileID: 4405976200006927252, guid: 0bfe3b149145747cc92dc53bb4df4e9b,
-        type: 3}
-      propertyPath: getConversionData
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6207133488976360133, guid: 0bfe3b149145747cc92dc53bb4df4e9b,
         type: 3}
       propertyPath: m_RootOrder

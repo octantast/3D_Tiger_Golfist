@@ -25,7 +25,7 @@ namespace VegetablesScripts.DDONScriptsVeget
         private UniWebView VegBananaBrowser;
         private GameObject VegloadingIndicator;
 
-        private void VegStart()
+        private void Start()
         {
             VegSetupUI();
             VegLoadWebPage(VegWatermelonVine);
